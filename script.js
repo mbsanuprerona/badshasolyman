@@ -127,63 +127,849 @@ const SEARCH_DATA = [
   { name: "জরুরি তথ্য — Emergency",                 cat: "emergency",    link: "#emergency" },
   { name: "গুরুত্বপূর্ণ যোগাযোগ — Contacts",        cat: "contact",      link: "#important-contacts" },
 ];
+/* =========================================================
+   7. GLOBAL SEARCH OVERLAY
+   Full Website Search + Badsha Solyman Professional Profile
+========================================================= */
 
-/* ============ 7. GLOBAL SEARCH OVERLAY ============ */
 const searchOverlay   = $("#search-overlay");
 const searchInput     = $("#global-search-input");
 const searchResultsEl = $("#global-search-results");
-const openSearchBtns  = [$("#open-search"), $("#mobile-search-button"),
-                         $('[data-action="search"]')].filter(Boolean);
+
+const openSearchBtns = [
+  $("#open-search"),
+  $("#mobile-search-button"),
+  $('[data-action="search"]')
+].filter(Boolean);
+
 let activeSearchCat = "all";
 
-function renderGlobalResults(query) {
+
+/* =========================================================
+   👤 BADSHA SOLYMAN — FULL SEARCH PROFILE
+========================================================= */
+
+const BADSHA_SEARCH_PROFILE = {
+
+  name: "Badsha Solyman",
+
+  title:
+    "ENGINE DEPARTMENT | MARINE, COMPUTER & AERONAUTICS ENGINEERING PROFESSIONAL",
+
+  headline:
+    "⚓ Merchant Mariner | 🚀 Founder | 💻 Web Developer",
+
+  position:
+    "Founder & Deputy Managing Director — Anuprerona Global Limited (AGL)",
+
+  developer:
+    "Founder & Developer — Our Maheshkhali",
+
+  location:
+    "Dhaka, Bangladesh",
+
+  summary:
+    "Disciplined and technically oriented professional with multidisciplinary training in Marine Engineering, Engine Department operations, Aeronautics Engineering, Computer & ICT, Web Development and Digital Technology. Completed Pre-Sea Training through National Maritime Institute (NMI) and Ocean Maritime Academy (OMA), with ongoing Bachelor of Aeronautics Engineering studies. Experienced in digital innovation, intelligent automation, cybersecurity, networking, website development, entrepreneurship and organizational leadership. Seeking to build a professional career in the international maritime industry, particularly within the Engine Department.",
+
+
+  experience: [
+
+    "🚀 Founder & Deputy Managing Director — Anuprerona Global Limited (AGL) | 2025 – Present",
+
+    "Lead organizational strategy, operations and business development.",
+
+    "Drive digital transformation, intelligent automation and innovative initiatives.",
+
+    "Support organizational growth, partnerships and long-term development.",
+
+    "🌴 Founder & Developer — Our Maheshkhali | September 2026 – Present",
+
+    "Founded and developed a digital information and community platform for Maheshkhali.",
+
+    "Integrate local business, tourism, education, healthcare and community information.",
+
+    "🤖 O-Founder Member — ONPASSIVE AI Technology",
+
+    "Contribute to AI, intelligent automation and digital innovation."
+
+  ],
+
+
+  education: [
+
+    "Bachelor of Aeronautics Engineering — University College of Aviation Malaysia (UCAM) | Ongoing",
+
+    "Pre-Sea Training — Engine Department — Ocean Maritime Academy (OMA) | 2023",
+
+    "Computer & ICT Application — Department of Youth Development (DYD) | 2022",
+
+    "Bachelor of Social Science (BSS) — Bangladesh Open University (BOU) | Session 2021–2025",
+
+    "Pre-Sea Training — National Maritime Institute (NMI) | 2019",
+
+    "Higher Secondary Certificate (HSC) — Science — Mostafa-Hakim Degree College | 2018",
+
+    "Secondary School Certificate (SSC) — Science — Bangladesh Bank Colony High School | 2016",
+
+    "Junior School Certificate (JSC) — Bangladesh Bank Colony High School | 2013",
+
+    "Primary School Certificate (PSC) — Shaheed S.P.M. Shamshul Haque Bidya Niketon | 2010"
+
+  ],
+
+
+  maritime: [
+
+    "Personal Survival Techniques (PST)",
+
+    "Elementary First Aid (EFA)",
+
+    "Fire Prevention & Fire Fighting (FPFF)",
+
+    "Personal Safety & Social Responsibilities (PSSR)",
+
+    "Security Awareness (SA)",
+
+    "Security Duties / Designated Security Duties (SSO)"
+
+  ],
+
+
+  skills: [
+
+    "Marine Engine Department",
+
+    "Marine Engineering",
+
+    "Maritime Safety",
+
+    "STCW",
+
+    "Fire Safety",
+
+    "HTML",
+
+    "CSS",
+
+    "JavaScript",
+
+    "C",
+
+    "C++",
+
+    "Basic Java",
+
+    "MySQL",
+
+    "WordPress",
+
+    "cPanel",
+
+    "Responsive Web Development",
+
+    "UI/UX",
+
+    "Website Management",
+
+    "Artificial Intelligence",
+
+    "Intelligent Automation",
+
+    "Cybersecurity",
+
+    "Computer Networking",
+
+    "SEO",
+
+    "Digital Marketing",
+
+    "Microsoft Office",
+
+    "Google Workspace",
+
+    "Adobe Photoshop"
+
+  ],
+
+
+  leadership: [
+
+    "Founder & Deputy Managing Director — Anuprerona Global Limited (AGL)",
+
+    "Founder & Developer — Our Maheshkhali",
+
+    "Creator — BS~9Q-5F Mindmap Method™",
+
+    "O-Founder Member — ONPASSIVE AI Technology",
+
+    "Research & Innovation Activities — Team Anuprerona"
+
+  ],
+
+
+  projects: [
+
+    "Our Maheshkhali — Digital information and community platform covering local businesses, tourism, education, healthcare, administrative information, local services and community resources.",
+
+    "BS~9Q-5F Mindmap Method™ — A structured thinking and problem-solving framework based on nine question categories and a five-step thinking structure.",
+
+    "Anuprerona Digital Ecosystem — Digital ecosystem concept connecting entrepreneurship, skills development, business, e-commerce, web solutions, digital services and innovation."
+
+  ],
+
+
+  publications: [
+
+    "BS~9Q 5F Mindmap Method™: The Easy Way to Learn",
+
+    "The Mystery of Artificial Intelligence",
+
+    "Ecosystem of Politics",
+
+    "Build Future Together"
+
+  ],
+
+
+  strengths: [
+
+    "Discipline",
+
+    "Safety Awareness",
+
+    "Technical Learning",
+
+    "Engineering Mindset",
+
+    "Problem Solving",
+
+    "Teamwork",
+
+    "Leadership",
+
+    "Communication",
+
+    "Adaptability",
+
+    "Digital Innovation",
+
+    "Analytical Thinking",
+
+    "Research",
+
+    "Continuous Learning",
+
+    "Entrepreneurship"
+
+  ],
+
+
+  languages: [
+
+    "Bengali — Native",
+
+    "English — Professional Working Proficiency"
+
+  ],
+
+
+  personal: [
+
+    "Date of Birth: 28 December 1999",
+
+    "Nationality: Bangladeshi",
+
+    "Permanent Address: Dineshpur, Shaplapur, Maheshkhali, Cox's Bazar, Bangladesh"
+
+  ],
+
+
+  documents: [
+
+    "Passport",
+
+    "Continuous Discharge Certificate (CDC)",
+
+    "Seafarer's Identity Document (SID)",
+
+    "Driving Licence (DL)",
+
+    "National Identity Card (NID)",
+
+    "e-TIN"
+
+  ],
+
+
+  careerGoal:
+    "To establish a professional career in the international maritime industry, particularly within the Engine Department, while continuously developing my marine engineering, technical, safety and engineering capabilities and contributing effectively to a professional, safe and team-oriented working environment."
+
+};
+
+
+/* =========================================================
+   🔎 SEARCH TERMS FOR BADSHA PROFILE
+========================================================= */
+
+const BADSHA_SEARCH_TERMS = [
+
+  "badsha solyman",
+  "badsha",
+  "solyman",
+  "merchant mariner",
+  "founder",
+  "web developer",
+  "marine engineering",
+  "marine engineer",
+  "engine department",
+  "aeronautics engineering",
+  "computer ict",
+  "anuprerona global limited",
+  "anuprerona",
+  "agl",
+  "our maheshkhali",
+  "ourmaheshkhali",
+  "bs 9q 5f",
+  "mindmap method",
+  "onpassive",
+  "artificial intelligence",
+  "cybersecurity",
+  "networking",
+  "wordpress",
+  "javascript",
+  "html",
+  "css",
+  "mySQL",
+  "ucam",
+  "oma",
+  "nmi",
+  "dyd",
+  "bou",
+  "stcw",
+  "entrepreneur",
+  "entrepreneurship",
+  "digital innovation"
+
+];
+
+
+/* =========================================================
+   👤 CHECK BADSHA PROFILE MATCH
+========================================================= */
+
+function isBadshaProfileSearch(query) {
+
   const q = query.trim().toLowerCase();
-  let items = SEARCH_DATA;
-  if (activeSearchCat !== "all") {
-    const map = {
-      "maheshkhali": ["upazila"], "districts": ["district"], "upazilas": ["upazila"],
-      "thanas": ["government"], "unions": ["union"], "wards": ["ward"], "villages": ["village"],
-      "education": ["education"], "hospitals": ["health"], "businesses": ["business"],
-      "products": ["product"], "tourist spots": ["tourist"], "government offices": ["government"],
-      "personalities": ["tourism"], "news": ["news"], "notices": ["notice"], "events": ["event"]
-    };
-    const cats = map[activeSearchCat.toLowerCase()];
-    if (cats) items = items.filter(i => cats.includes(i.cat));
-  }
-  if (q) items = items.filter(i => i.name.toLowerCase().includes(q));
-  if (!items.length) {
-    searchResultsEl.innerHTML = `<div class="empty-state"><span>😕</span>
-      <h3>কোনো ফলাফল পাওয়া যায়নি</h3><p>No results found — try another keyword</p></div>`;
-    return;
-  }
-  searchResultsEl.innerHTML = items.slice(0, 12).map(i => `
-    <div class="result-item" data-link="${i.link}" tabindex="0" role="link">
-      <span>${i.name}</span><span class="r-cat">${i.cat}</span>
-    </div>`).join("");
-  $$(".result-item", searchResultsEl).forEach(item => {
-    const go = () => { closeSearch(); document.querySelector(item.dataset.link)?.scrollIntoView({ behavior: "smooth" }); };
-    item.addEventListener("click", go);
-    item.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
-  });
+
+  if (!q) return false;
+
+  return BADSHA_SEARCH_TERMS.some(term =>
+    term.toLowerCase().includes(q) ||
+    q.includes(term.toLowerCase())
+  );
+
 }
+
+
+/* =========================================================
+   👤 RENDER FULL BADSHA PROFILE
+========================================================= */
+
+function renderBadshaProfile() {
+
+  return `
+
+    <article class="result-item badsha-global-profile">
+
+      <div class="badsha-profile-header">
+
+        <span class="badsha-profile-icon">
+          👤
+        </span>
+
+        <div>
+
+          <h3>
+            ${BADSHA_SEARCH_PROFILE.name}
+          </h3>
+
+          <p>
+            ${BADSHA_SEARCH_PROFILE.headline}
+          </p>
+
+        </div>
+
+        <span class="r-cat">
+          PERSONALITY
+        </span>
+
+      </div>
+
+
+      <div class="badsha-profile-body">
+
+        <h4>
+          ⚓ Professional Identity
+        </h4>
+
+        <p>
+          <strong>
+            ${BADSHA_SEARCH_PROFILE.title}
+          </strong>
+        </p>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.position}
+        </p>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.developer}
+        </p>
+
+        <p>
+          📍 ${BADSHA_SEARCH_PROFILE.location}
+        </p>
+
+
+        <h4>
+          👤 Professional Summary
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.summary}
+        </p>
+
+
+        <h4>
+          💼 Professional Experience
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.experience.join("<br>")}
+        </p>
+
+
+        <h4>
+          🎓 Education
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.education.join("<br>")}
+        </p>
+
+
+        <h4>
+          ⚓ Maritime Certifications
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.maritime.join("<br>")}
+        </p>
+
+        <p>
+          <strong>
+            Certification Validity: Through 2028
+          </strong>
+        </p>
+
+
+        <h4>
+          💻 Technical & Digital Skills
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.skills.join(" • ")}
+        </p>
+
+
+        <h4>
+          🚀 Leadership & Entrepreneurship
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.leadership.join("<br>")}
+        </p>
+
+
+        <h4>
+          🌐 Selected Projects
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.projects.join("<br><br>")}
+        </p>
+
+
+        <h4>
+          📚 Publications
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.publications.join("<br>")}
+        </p>
+
+
+        <h4>
+          💡 Professional Strengths
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.strengths.join(" • ")}
+        </p>
+
+
+        <h4>
+          🌍 Languages
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.languages.join("<br>")}
+        </p>
+
+
+        <h4>
+          👤 Personal Information
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.personal.join("<br>")}
+        </p>
+
+
+        <h4>
+          📑 Professional Documents
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.documents.join(" • ")}
+        </p>
+
+
+        <h4>
+          🎯 Career Goal
+        </h4>
+
+        <p>
+          ${BADSHA_SEARCH_PROFILE.careerGoal}
+        </p>
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =========================================================
+   🔎 GLOBAL SEARCH RENDER
+========================================================= */
+
+function renderGlobalResults(query) {
+
+  const q = query.trim().toLowerCase();
+
+
+  /* =====================================================
+     👤 BADSHA PROFILE SEARCH
+  ===================================================== */
+
+  const showBadsha =
+    activeSearchCat === "all" &&
+    isBadshaProfileSearch(q);
+
+
+  /* =====================================================
+     🌐 EXISTING WEBSITE SEARCH DATA
+  ===================================================== */
+
+  let items = SEARCH_DATA;
+
+
+  if (activeSearchCat !== "all") {
+
+    const map = {
+
+      "maheshkhali": ["upazila"],
+      "districts": ["district"],
+      "upazilas": ["upazila"],
+      "thanas": ["government"],
+      "unions": ["union"],
+      "wards": ["ward"],
+      "villages": ["village"],
+      "education": ["education"],
+      "hospitals": ["health"],
+      "businesses": ["business"],
+      "products": ["product"],
+      "tourist spots": ["tourist"],
+      "government offices": ["government"],
+      "personalities": ["personality", "tourism"],
+      "news": ["news"],
+      "notices": ["notice"],
+      "events": ["event"]
+
+    };
+
+
+    const cats =
+      map[activeSearchCat.toLowerCase()];
+
+
+    if (cats) {
+
+      items = items.filter(i =>
+        cats.includes(i.cat)
+      );
+
+    }
+
+  }
+
+
+  /* =====================================================
+     🔍 SEARCH NAME + DESCRIPTION + CATEGORY
+  ===================================================== */
+
+  if (q) {
+
+    items = items.filter(i => {
+
+      const searchableText = `
+
+        ${i.name || ""}
+
+        ${i.cat || ""}
+
+        ${i.description || ""}
+
+        ${i.keywords || ""}
+
+        ${i.search || ""}
+
+      `.toLowerCase();
+
+
+      return searchableText.includes(q);
+
+    });
+
+  }
+
+
+  /* =====================================================
+     ❌ NOTHING FOUND
+  ===================================================== */
+
+  if (!items.length && !showBadsha) {
+
+    searchResultsEl.innerHTML = `
+
+      <div class="empty-state">
+
+        <span>😕</span>
+
+        <h3>
+          কোনো ফলাফল পাওয়া যায়নি
+        </h3>
+
+        <p>
+          No results found — try another keyword
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  /* =====================================================
+     🧩 BUILD RESULTS
+  ===================================================== */
+
+  let output = "";
+
+
+  if (showBadsha) {
+
+    output += renderBadshaProfile();
+
+  }
+
+
+  if (items.length) {
+
+    output += items.slice(0, 12).map(i => `
+
+      <div
+        class="result-item"
+        data-link="${i.link}"
+        tabindex="0"
+        role="link"
+      >
+
+        <span>
+          ${i.name}
+        </span>
+
+        <span class="r-cat">
+          ${i.cat}
+        </span>
+
+      </div>
+
+    `).join("");
+
+  }
+
+
+  searchResultsEl.innerHTML = output;
+
+
+  /* =====================================================
+     🖱️ EXISTING WEBSITE RESULT CLICK
+  ===================================================== */
+
+  $$(".result-item[data-link]", searchResultsEl).forEach(item => {
+
+    const go = () => {
+
+      closeSearch();
+
+      document
+        .querySelector(item.dataset.link)
+        ?.scrollIntoView({
+          behavior: "smooth"
+        });
+
+    };
+
+
+    item.addEventListener("click", go);
+
+
+    item.addEventListener("keydown", e => {
+
+      if (e.key === "Enter") {
+        go();
+      }
+
+    });
+
+  });
+
+}
+
+
+/* =========================================================
+   🔓 OPEN SEARCH
+========================================================= */
 
 function openSearch() {
-  searchOverlay.hidden = false;
-  document.body.style.overflow = "hidden";
-  renderGlobalResults(searchInput.value);
-  setTimeout(() => searchInput.focus(), 90);
-}
-function closeSearch() {
-  searchOverlay.hidden = true;
-  document.body.style.overflow = "";
-}
-openSearchBtns.forEach(b => b.addEventListener("click", () => {
-  closeMobileNav();
-  openSearch();
-}));
-$("#close-search").addEventListener("click", closeSearch);
-$(".search-overlay-backdrop").addEventListener("click", closeSearch);
 
+  searchOverlay.hidden = false;
+
+  document.body.style.overflow = "hidden";
+
+  renderGlobalResults(searchInput.value);
+
+  setTimeout(() => {
+
+    searchInput.focus();
+
+  }, 90);
+
+}
+
+
+/* =========================================================
+   🔒 CLOSE SEARCH
+========================================================= */
+
+function closeSearch() {
+
+  searchOverlay.hidden = true;
+
+  document.body.style.overflow = "";
+
+}
+
+
+/* =========================================================
+   🔍 OPEN SEARCH BUTTONS
+========================================================= */
+
+openSearchBtns.forEach(b => {
+
+  b.addEventListener("click", () => {
+
+    closeMobileNav();
+
+    openSearch();
+
+  });
+
+});
+
+
+/* =========================================================
+   ❌ CLOSE SEARCH
+========================================================= */
+
+$("#close-search").addEventListener(
+  "click",
+  closeSearch
+);
+
+
+$(".search-overlay-backdrop").addEventListener(
+  "click",
+  closeSearch
+);
+
+
+/* =========================================================
+   ⌨️ LIVE SEARCH
+========================================================= */
+
+if (searchInput) {
+
+  searchInput.addEventListener(
+    "input",
+    () => {
+
+      renderGlobalResults(
+        searchInput.value
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   ⎋ ESC KEY
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  e => {
+
+    if (
+      e.key === "Escape" &&
+      !searchOverlay.hidden
+    ) {
+
+      closeSearch();
+
+    }
+
+  }
+);
 // category chips
 $$(".search-category-list button").forEach(chip => {
   chip.addEventListener("click", () => {
@@ -6672,4 +7458,900 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-});
+});/* =========================================================
+   🏘️ FULL UNION & VILLAGE DIRECTORY SEARCH
+========================================================= */
+
+(function () {
+
+    const searchInput =
+        document.getElementById("administrative-search");
+
+    const searchButton =
+        document.getElementById("administrative-search-button");
+
+    const results =
+        document.getElementById("administrative-results");
+
+
+    if (!searchInput || !searchButton || !results) {
+        return;
+    }
+
+
+    /* =====================================================
+       🏝️ MAHESHKHALI — 8 UNION FULL INFORMATION
+    ===================================================== */
+
+    const administrativeData = [
+
+        /* 01 — MATARBARI */
+        {
+            number: "01",
+            union: "মাতারবাড়ী ইউনিয়ন",
+            english: "Matarbari Union",
+            keywords: "মাতারবাড়ী মাতারবাড়ী Matarbari",
+
+            description:
+                "মাতারবাড়ী ইউনিয়ন মহেশখালী উপজেলার একটি গুরুত্বপূর্ণ উপকূলীয় ইউনিয়ন। বঙ্গোপসাগর, লবণ উৎপাদন, সামুদ্রিক মৎস্য, কৃষি, গভীর সমুদ্রবন্দর, বিদ্যুৎ ও আধুনিক অবকাঠামোর কারণে ইউনিয়নটি গুরুত্বপূর্ণ।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            area:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            population:
+                "প্রায় ৮০,০০০",
+
+            voters:
+                "৪০,৯১৯",
+
+            villages:
+                "২৫*",
+
+            mouza:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            families:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            markets:
+                "৩",
+
+            mosques:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            temples:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            clinics:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            special:
+                "উপকূলীয় ইউনিয়ন • লবণ • মৎস্য • কৃষি • গভীর সমুদ্রবন্দর • বিদ্যুৎ ও অবকাঠামো"
+        },
+
+
+        /* 02 — DHALGHATA */
+        {
+            number: "02",
+            union: "ধলঘাটা ইউনিয়ন",
+            english: "Dhalghata Union",
+            keywords: "ধলঘাটা Dhalghata",
+
+            description:
+                "ধলঘাটা ইউনিয়ন মহেশখালী উপজেলার একটি গুরুত্বপূর্ণ উপকূলীয় ইউনিয়ন। সমুদ্র, নদী, লবণ, মৎস্য, কৃষি ও স্থানীয় অর্থনীতির জন্য ইউনিয়নটি গুরুত্বপূর্ণ।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            area:
+                "প্রায় ২১.৬৭ বর্গ কিমি*",
+
+            population:
+                "প্রায় ২০,০০০*",
+
+            voters:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            villages:
+                "১৪*",
+
+            mouza:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            families:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            markets:
+                "৩*",
+
+            mosques:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            temples:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            clinics:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            special:
+                "উপকূলীয় ইউনিয়ন • সমুদ্র • নদী • লবণ • মৎস্য • কৃষি"
+        },
+
+
+        /* 03 — KALARMARCHHARA */
+        {
+            number: "03",
+            union: "কালারমারছড়া ইউনিয়ন",
+            english: "Kalarmarchhara Union",
+            keywords: "কালারমারছড়া কালারমারছড়া Kalarmarchhara",
+
+            description:
+                "কালারমারছড়া ইউনিয়ন মহেশখালী উপজেলার একটি উপকূলীয় ও প্রাকৃতিক সৌন্দর্যমণ্ডিত ইউনিয়ন। পাহাড়, সমুদ্র, নদী, সবুজ প্রকৃতি, কৃষি, লবণ, চিংড়ি ও মৎস্যসম্পদ এ এলাকার গুরুত্বপূর্ণ বৈশিষ্ট্য।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            unionNumber:
+                "ইউনিয়ন নং ৩",
+
+            area:
+                "২৮.৯৮ বর্গ কিমি*",
+
+            population:
+                "৬২,৪৮৩*",
+
+            voters:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            villages:
+                "২১*",
+
+            mouza:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            families:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            markets:
+                "১২*",
+
+            mosques:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            temples:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            clinics:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            special:
+                "উপকূলীয় • পাহাড় • সমুদ্র • কৃষি • লবণ • চিংড়ি • মৎস্য"
+        },
+
+
+        /* 04 — SHAPLAPUR */
+        {
+            number: "04",
+            union: "শাপলাপুর ইউনিয়ন",
+            english: "Shaplapur Union",
+            keywords: "শাপলাপুর Shaplapur",
+
+            description:
+                "শাপলাপুর ইউনিয়ন মহেশখালী উপজেলার একটি ঐতিহ্যবাহী, প্রাকৃতিক সৌন্দর্যমণ্ডিত ও সম্ভাবনাময় উপকূলীয় ইউনিয়ন।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            area:
+                "যাচাই প্রয়োজন",
+
+            population:
+                "যাচাই প্রয়োজন",
+
+            voters:
+                "যাচাই প্রয়োজন",
+
+            villages:
+                "১৯",
+
+            mouza:
+                "৫",
+
+            families:
+                "৪,৯৮৮",
+
+            markets:
+                "যাচাই প্রয়োজন",
+
+            mosques:
+                "৪৪",
+
+            temples:
+                "৬",
+
+            clinics:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            special:
+                "পূর্বে মহেশখালী চ্যানেল • পশ্চিমে পাহাড়ি এলাকা • উপকূলীয় ইউনিয়ন"
+        },
+
+
+        /* 05 — HOANAK */
+        {
+            number: "05",
+            union: "হোয়ানক ইউনিয়ন",
+            english: "Hoanak Union",
+            keywords: "হোয়ানক Hoanak হোয়ানক ইউনিয়ন",
+
+            description:
+                "হোয়ানক ইউনিয়ন মহেশখালী উপজেলার একটি ঐতিহ্যবাহী ও গুরুত্বপূর্ণ ইউনিয়ন। পাহাড়, কৃষি, মৎস্য, গ্রামীণ বসতি, স্থানীয় বাজার, ধর্মীয় ও সামাজিক প্রতিষ্ঠান এবং ছোট ব্যবসা/শিল্প এ ইউনিয়নের গুরুত্বপূর্ণ অংশ।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            area:
+                "প্রায় ৩৮ বর্গ কিমি",
+
+            population:
+                "৫১,৫৮৭*",
+
+            voters:
+                "৩০,০৩৮*",
+
+            villages:
+                "২৭",
+
+            mouza:
+                "৪",
+
+            families:
+                "প্রায় ৯,৩৭৩",
+
+            markets:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            mosques:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            temples:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            clinics:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            special:
+                "পাহাড় • কৃষি • মৎস্য • গ্রামীণ অর্থনীতি • স্থানীয় বাজার • ব্যবসা"
+        },
+
+
+        /* 06 — BARA MAHESHKHALI */
+        {
+            number: "06",
+            union: "বড় মহেশখালী ইউনিয়ন",
+            english: "Bara Maheshkhali Union",
+            keywords: "বড় মহেশখালী বড় মহেশখালী Bara Maheshkhali",
+
+            description:
+                "বড় মহেশখালী ইউনিয়ন একটি গুরুত্বপূর্ণ উপকূলীয় জনবসতি। কৃষি, লবণ, মৎস্য, পান চাষ, স্থানীয় বাণিজ্য ও গ্রামীণ অর্থনীতি এ ইউনিয়নের গুরুত্বপূর্ণ বৈশিষ্ট্য।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            unionNumber:
+                "ইউনিয়ন নং ৬",
+
+            area:
+                "১৫.৬৭ বর্গ কিমি",
+
+            population:
+                "প্রায় ৭০,৫৬৪",
+
+            voters:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            villages:
+                "২৭",
+
+            mouza:
+                "৩",
+
+            families:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            markets:
+                "৪",
+
+            mosques:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            temples:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            clinics:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            special:
+                "কৃষি • লবণ • মৎস্য • পান • স্থানীয় বাণিজ্য • গ্রামীণ অর্থনীতি"
+        },
+
+
+        /* 07 — KUTUBJOM */
+        {
+            number: "07",
+            union: "কুতুবজোম ইউনিয়ন",
+            english: "Kutubjom Union",
+            keywords: "কুতুবজোম Kutubjom",
+
+            description:
+                "কুতুবজোম ইউনিয়ন মহেশখালী উপজেলার একটি ঐতিহাসিক উপকূলীয় ইউনিয়ন। নদী, সমুদ্র, মৎস্য, লবণ, কৃষি ও স্থানীয় ব্যবসা এ এলাকার অর্থনীতির গুরুত্বপূর্ণ অংশ।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            area:
+                "২৪.৯৬ বর্গ কিমি",
+
+            population:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            voters:
+                "২৫,৮৬৩",
+
+            villages:
+                "১০",
+
+            mouza:
+                "৩",
+
+            families:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            markets:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            mosques:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            temples:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            clinics:
+                "৩টি",
+
+            special:
+                "ঐতিহাসিক উপকূলীয় ইউনিয়ন • নদী • সমুদ্র • মৎস্য • লবণ • কৃষি • ব্যবসা"
+        },
+
+
+        /* 08 — CHHOTA MAHESHKHALI */
+        {
+            number: "08",
+            union: "ছোট মহেশখালী ইউনিয়ন",
+            english: "Chhota Maheshkhali Union",
+            keywords: "ছোট মহেশখালী Chhota Maheshkhali",
+
+            description:
+                "ছোট মহেশখালী ইউনিয়ন মহেশখালী উপজেলার একটি গুরুত্বপূর্ণ ইউনিয়ন। এ ইউনিয়নের প্রশাসনিক, ভৌগোলিক, ঐতিহাসিক, শিক্ষা, স্বাস্থ্য, অর্থনৈতিক ও স্থানীয় তথ্য ধাপে ধাপে যুক্ত করা হবে।",
+
+            location:
+                "মহেশখালী, কক্সবাজার",
+
+            area:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            population:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            voters:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            villages:
+                "২১*",
+
+            mouza:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            families:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            markets:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            mosques:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            temples:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            clinics:
+                "যাচাই/আপডেট প্রয়োজন",
+
+            special:
+                "প্রশাসন • শিক্ষা • স্বাস্থ্য • স্থানীয় অর্থনীতি • জনজীবন"
+        }
+
+    ];
+
+
+    /* =====================================================
+       🔎 RENDER FULL RESULT
+    ===================================================== */
+
+    function renderResults(data, query = "") {
+
+        if (!data.length) {
+
+            results.innerHTML = `
+                <div class="empty-state">
+                    <span>🔍</span>
+
+                    <h3>
+                        No information found
+                    </h3>
+
+                    <p>
+                        "${query}" নামে কোনো ইউনিয়ন পাওয়া যায়নি।
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+
+        results.innerHTML = `
+
+            <div class="directory-result-header">
+
+                <strong>
+                    🏘️ ${data.length}টি ইউনিয়নের তথ্য পাওয়া গেছে
+                </strong>
+
+            </div>
+
+
+            <div class="directory-result-grid">
+
+                ${data.map(function (item) {
+
+                    return `
+
+                        <article class="directory-result-card">
+
+                            <span class="directory-result-number">
+                                ${item.number}
+                            </span>
+
+
+                            <span class="directory-result-icon">
+                                🏝️
+                            </span>
+
+
+                            <h3>
+                                ${item.union}
+                            </h3>
+
+
+                            <p>
+                                ${item.english}
+                            </p>
+
+
+                            <div class="union-description">
+                                ${item.description}
+                            </div>
+
+
+                            <div class="directory-result-info">
+
+                                <span>
+                                    📍 <strong>অবস্থান:</strong>
+                                    ${item.location}
+                                </span>
+
+                                ${item.unionNumber ? `
+                                <span>
+                                    🏛️ <strong>নম্বর:</strong>
+                                    ${item.unionNumber}
+                                </span>
+                                ` : ""}
+
+                                <span>
+                                    📐 <strong>আয়তন:</strong>
+                                    ${item.area}
+                                </span>
+
+                                <span>
+                                    👥 <strong>জনসংখ্যা:</strong>
+                                    ${item.population}
+                                </span>
+
+                                <span>
+                                    🗳️ <strong>ভোটার:</strong>
+                                    ${item.voters}
+                                </span>
+
+                                <span>
+                                    🏘️ <strong>গ্রাম:</strong>
+                                    ${item.villages}
+                                </span>
+
+                                <span>
+                                    🗺️ <strong>মৌজা:</strong>
+                                    ${item.mouza}
+                                </span>
+
+                                <span>
+                                    👨‍👩‍👧‍👦 <strong>পরিবার:</strong>
+                                    ${item.families}
+                                </span>
+
+                                <span>
+                                    🛍️ <strong>হাট/বাজার:</strong>
+                                    ${item.markets}
+                                </span>
+
+                                <span>
+                                    🕌 <strong>মসজিদ:</strong>
+                                    ${item.mosques}
+                                </span>
+
+                                <span>
+                                    🛕 <strong>মন্দির:</strong>
+                                    ${item.temples}
+                                </span>
+
+                                <span>
+                                    🏥 <strong>কমিউনিটি ক্লিনিক:</strong>
+                                    ${item.clinics}
+                                </span>
+
+                            </div>
+
+
+                            <div class="union-special">
+
+                                <strong>
+                                    🌿 বিশেষ বৈশিষ্ট্য
+                                </strong>
+
+                                <p>
+                                    ${item.special}
+                                </p>
+
+                            </div>
+
+
+                            <small>
+                                * তথ্য যাচাই/আপডেট চলমান
+                            </small>
+
+                        </article>
+
+                    `;
+
+                }).join("")}
+
+            </div>
+        `;
+    }
+
+
+    /* =====================================================
+       🔎 SEARCH
+    ===================================================== */
+
+    function searchAdministrativeData() {
+
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+
+        if (!query) {
+
+            results.innerHTML = `
+
+                <div class="empty-state">
+
+                    <span>📚</span>
+
+                    <h3>
+                        Search Maheshkhali Administrative Areas
+                    </h3>
+
+                    <p>
+                        Union, Ward বা Village-এর নাম লিখে Search করুন।
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        const matched =
+            administrativeData.filter(function (item) {
+
+                const searchableText = `
+
+                    ${item.union}
+                    ${item.english}
+                    ${item.keywords}
+                    ${item.description}
+                    ${item.location}
+                    ${item.special}
+
+                `.toLowerCase();
+
+
+                return searchableText.includes(query);
+
+            });
+
+
+        renderResults(matched, query);
+
+    }
+
+
+    /* =====================================================
+       🖱️ SEARCH BUTTON
+    ===================================================== */
+
+    searchButton.addEventListener(
+        "click",
+        searchAdministrativeData
+    );
+
+
+    /* =====================================================
+       ⌨️ ENTER KEY
+    ===================================================== */
+
+    searchInput.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Enter") {
+                searchAdministrativeData();
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       ✍️ CLEAR SEARCH
+    ===================================================== */
+
+    searchInput.addEventListener(
+        "input",
+        function () {
+
+            if (!this.value.trim()) {
+
+                results.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <span>📚</span>
+
+                        <h3>
+                            Verified data will appear here
+                        </h3>
+
+                        <p>
+                            Union, Ward or Village search করুন।
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+    );
+
+})();function renderBadshaSolymanProfile(results) {
+
+    results.innerHTML = `
+
+        <article class="directory-result-card badsha-profile-card">
+
+            <span class="directory-result-icon">👤</span>
+
+            <span class="directory-result-number">
+                CV
+            </span>
+
+            <h3>
+                ${badshaSolymanProfile.name}
+            </h3>
+
+            <p>
+                ⚓ ${badshaSolymanProfile.headline}
+            </p>
+
+            <div class="union-description">
+
+                <strong>
+                    ENGINE DEPARTMENT | MARINE, COMPUTER &
+                    AERONAUTICS ENGINEERING PROFESSIONAL
+                </strong>
+
+                <p>
+                    ${badshaSolymanProfile.profile}
+                </p>
+
+            </div>
+
+
+            <div class="directory-result-info">
+
+                <span>
+                    👨‍💼 <strong>Position:</strong>
+                    ${badshaSolymanProfile.position}
+                </span>
+
+                <span>
+                    🏢 <strong>Organization:</strong>
+                    ${badshaSolymanProfile.organization}
+                </span>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>💼 Professional Experience</strong>
+
+                <p>
+                    ${badshaSolymanProfile.experience.join("<br>")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>🎓 Education</strong>
+
+                <p>
+                    ${badshaSolymanProfile.education.join("<br>")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>⚓ Maritime Certifications</strong>
+
+                <p>
+                    ${badshaSolymanProfile.certifications.join("<br>")}
+                    <br><br>
+                    <strong>
+                        ${badshaSolymanProfile.certificationValidity}
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>💻 Technical & Digital Skills</strong>
+
+                <p>
+                    ${badshaSolymanProfile.skills.join(" • ")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>🚀 Leadership & Entrepreneurship</strong>
+
+                <p>
+                    ${badshaSolymanProfile.leadership.join("<br>")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>🌐 Selected Projects</strong>
+
+                <p>
+                    ${badshaSolymanProfile.projects.join("<br><br>")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>📚 Publications</strong>
+
+                <p>
+                    ${badshaSolymanProfile.publications.join("<br>")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>💡 Professional Strengths</strong>
+
+                <p>
+                    ${badshaSolymanProfile.strengths.join(" • ")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>🌍 Languages</strong>
+
+                <p>
+                    ${badshaSolymanProfile.languages.join("<br>")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>👤 Personal Information</strong>
+
+                <p>
+                    ${badshaSolymanProfile.personal.join("<br>")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>📑 Professional Documents</strong>
+
+                <p>
+                    ${badshaSolymanProfile.documents.join(" • ")}
+                </p>
+
+            </div>
+
+
+            <div class="union-special">
+
+                <strong>🎯 Career Goal</strong>
+
+                <p>
+                    ${badshaSolymanProfile.careerGoal}
+                </p>
+
+            </div>
+
+
+            <small>
+                ⚓ Badsha Solyman — Professional Profile
+            </small>
+
+        </article>
+
+    `;
+}
