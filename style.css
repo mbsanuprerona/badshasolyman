@@ -4444,4 +4444,1603 @@ body.modal-open {
     .union-card {
         animation: none !important;
     }
+}/* =========================================================
+   OUR MAHESHKHALI
+   MAIN NAVIGATION — FUNCTIONAL UI / UX
+   BRAND COLORS ONLY
+========================================================= */
+
+:root {
+    --white: #FFFFFF;
+    --maroon: #800000;
+    --green: #228B22;
+    --gold: #D4AF37;
+}
+
+/* =========================================================
+   MAIN NAVIGATION
+========================================================= */
+
+.main-navigation {
+    position: relative;
+    z-index: 1000;
+}
+
+.navigation-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* =========================================================
+   NAV ITEM
+========================================================= */
+
+.nav-item {
+    position: relative;
+    list-style: none;
+}
+
+/* =========================================================
+   MAIN MENU BUTTON / LINK
+========================================================= */
+
+.nav-link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    min-height: 46px;
+    padding: 11px 13px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: transparent;
+    color: var(--maroon);
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .25px;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        color .25s ease,
+        background-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+/* =========================================================
+   ICON + TEXT VISIBILITY
+========================================================= */
+
+.nav-link::first-letter {
+    font-size: 1.08em;
+}
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--green);
+    background: var(--white);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 0 var(--gold);
+}
+
+/* =========================================================
+   ACTIVE HOME / CURRENT ITEM
+========================================================= */
+
+.nav-link.active,
+.nav-item.current > .nav-link {
+    color: var(--white);
+    background: var(--maroon);
+
+    box-shadow:
+        0 4px 0 var(--gold);
+}
+
+/* =========================================================
+   DROPDOWN ARROW
+========================================================= */
+
+.dropdown-trigger > span {
+    display: inline-block;
+
+    margin-left: 2px;
+
+    color: var(--gold);
+    font-size: 16px;
+    font-weight: 900;
+
+    transition:
+        transform .3s ease,
+        color .3s ease;
+}
+
+.has-dropdown.is-open > .dropdown-trigger > span {
+    color: var(--gold);
+    transform: rotate(180deg);
+}
+
+/* =========================================================
+   MEGA MENU
+========================================================= */
+
+.mega-menu {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 50%;
+
+    width: max-content;
+    min-width: 320px;
+    max-width: min(850px, 92vw);
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(190px, 1fr));
+    gap: 12px;
+
+    padding: 16px;
+
+    background: var(--white);
+    border: 2px solid var(--maroon);
+    border-top: 4px solid var(--gold);
+    border-radius: 12px;
+
+    box-shadow:
+        0 12px 0 var(--green),
+        0 20px 35px var(--maroon);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -12px)
+        perspective(900px)
+        rotateX(-8deg);
+
+    transform-origin: top center;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease,
+        transform .3s ease;
+}
+
+/* =========================================================
+   OPEN STATE
+========================================================= */
+
+.has-dropdown.is-open > .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform:
+        translate(-50%, 0)
+        perspective(900px)
+        rotateX(0deg);
+}
+
+/* =========================================================
+   MEGA MENU COLUMN
+========================================================= */
+
+.mega-menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    min-width: 190px;
+}
+
+/* =========================================================
+   SUB MENU LINKS
+========================================================= */
+
+.mega-menu-column a {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 40px;
+
+    padding: 9px 11px;
+
+    border-left: 3px solid transparent;
+    border-radius: 6px;
+
+    background: var(--white);
+    color: var(--maroon);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+
+    text-decoration: none;
+
+    transition:
+        color .2s ease,
+        background-color .2s ease,
+        border-color .2s ease,
+        padding-left .2s ease,
+        transform .2s ease;
+}
+
+/* =========================================================
+   SUB MENU HOVER
+========================================================= */
+
+.mega-menu-column a:hover,
+.mega-menu-column a:focus-visible {
+    color: var(--green);
+    background: var(--white);
+
+    border-left-color: var(--gold);
+
+    padding-left: 16px;
+
+    transform: translateX(3px);
+}
+
+/* =========================================================
+   SEARCH / THEME
+========================================================= */
+
+.search-trigger,
+.theme-toggle {
+    cursor: pointer;
+}
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+========================================================= */
+
+.nav-link:focus-visible,
+.mega-menu-column a:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+}
+
+/* =========================================================
+   DESKTOP HOVER SUPPORT
+========================================================= */
+
+@media (min-width: 901px) {
+
+    .has-dropdown:hover > .mega-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform:
+            translate(-50%, 0)
+            perspective(900px)
+            rotateX(0deg);
+    }
+
+    .has-dropdown:hover > .dropdown-trigger > span {
+        transform: rotate(180deg);
+    }
+}
+
+/* =========================================================
+   LARGE SCREEN
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .navigation-list {
+        gap: 6px;
+    }
+
+    .nav-link {
+        min-height: 50px;
+        padding: 12px 15px;
+
+        font-size: 14px;
+    }
+
+    .mega-menu {
+        min-width: 420px;
+    }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .navigation-list {
+        gap: 2px;
+    }
+
+    .nav-link {
+        min-height: 44px;
+        padding: 10px 9px;
+
+        font-size: 12px;
+    }
+
+    .mega-menu {
+        grid-template-columns: 1fr 1fr;
+        min-width: 360px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+   Existing HTML structure preserved
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .main-navigation {
+        width: 100%;
+    }
+
+    .navigation-list {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        width: 100%;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        width: 100%;
+
+        justify-content: flex-start;
+
+        min-height: 48px;
+        padding: 12px 15px;
+
+        border-radius: 7px;
+
+        font-size: 14px;
+    }
+
+    .mega-menu {
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+
+        grid-template-columns: 1fr;
+
+        margin: 5px 0 8px;
+        padding: 10px;
+
+        border-top-width: 3px;
+
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+
+        transform: none;
+
+        display: none;
+    }
+
+    .has-dropdown.is-open > .mega-menu {
+        display: grid;
+
+        transform: none;
+    }
+
+    .mega-menu-column {
+        min-width: 0;
+    }
+
+    .mega-menu-column a {
+        min-height: 42px;
+
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .nav-link {
+        min-height: 50px;
+        padding: 13px 14px;
+
+        font-size: 13px;
+    }
+
+    .mega-menu {
+        padding: 8px;
+    }
+
+    .mega-menu-column a {
+        padding: 10px;
+
+        font-size: 12px;
+    }
+}/* =========================================================
+   ABOUT MAHESHKHALI — FUNCTIONAL UI
+========================================================= */
+
+.about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+
+.about-action-btn {
+    cursor: pointer;
+    padding: 10px 16px;
+    border: 1px solid currentColor;
+    background: transparent;
+    border-radius: 8px;
+    font: inherit;
+    transition: 0.25s ease;
+}
+
+
+.about-action-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.about-extra-content,
+.about-verification-panel {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid currentColor;
+    border-radius: 12px;
+}
+
+
+.about-topic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+
+.about-topic-list span {
+    padding: 7px 11px;
+    border: 1px solid currentColor;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+
+.verification-status {
+    display: grid;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+
+.verification-status > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+.verification-note {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+
+@media (max-width: 600px) {
+
+    .about-actions {
+        flex-direction: column;
+    }
+
+    .about-action-btn {
+        width: 100%;
+    }
+
+}/* =========================================================
+   OUR MAHESHKHALI
+   INFORMATION CARDS — PREMIUM 3D UI
+========================================================= */
+
+.about-information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+    perspective: 1200px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.info-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+    padding: 26px;
+    overflow: hidden;
+
+    background: #FFFFFF;
+
+    border: 1px solid rgba(128, 0, 0, 0.16);
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.07),
+        0 2px 8px rgba(128, 0, 0, 0.05);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.45s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.45s ease,
+        border-color 0.3s ease;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   DECORATIVE 3D LIGHT
+========================================================= */
+
+.info-card::before {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background: rgba(212, 175, 55, 0.08);
+
+    filter: blur(2px);
+
+    z-index: -1;
+
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
+}
+
+
+.info-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 26px;
+    right: 26px;
+    bottom: 0;
+
+    height: 3px;
+
+    background: #D4AF37;
+
+    border-radius: 3px 3px 0 0;
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+/* =========================================================
+   HOVER — SUBTLE 3D
+========================================================= */
+
+.info-card:hover {
+    transform:
+        translateY(-10px)
+        rotateX(1deg)
+        rotateY(-1deg);
+
+    border-color: rgba(128, 0, 0, 0.35);
+
+    box-shadow:
+        0 22px 45px rgba(0, 0, 0, 0.12),
+        0 8px 20px rgba(128, 0, 0, 0.10);
+}
+
+
+.info-card:hover::before {
+    transform: scale(1.35);
+}
+
+
+.info-card:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   TOP ROW
+========================================================= */
+
+.info-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+
+.info-card-icon {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 62px;
+    height: 62px;
+
+    border-radius: 16px;
+
+    background: rgba(34, 139, 34, 0.08);
+
+    border: 1px solid rgba(34, 139, 34, 0.16);
+
+    font-size: 30px;
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.06);
+
+    transform: translateZ(20px);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.info-card:hover .info-card-icon {
+    transform:
+        translateZ(35px)
+        rotate(-4deg)
+        scale(1.06);
+
+    box-shadow:
+        0 14px 25px rgba(0, 0, 0, 0.10);
+}
+
+
+.info-card-number {
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+
+    color: #D4AF37;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.info-card-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 0.72rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.13em;
+
+    color: #D4AF37;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.info-card h3 {
+    margin: 0 0 12px;
+
+    color: #800000;
+
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+
+    line-height: 1.2;
+
+    transform: translateZ(12px);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.info-card-content p {
+    margin: 0;
+
+    color: inherit;
+
+    line-height: 1.85;
+
+    font-size: 0.98rem;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.info-card-footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: auto;
+
+    padding-top: 25px;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.card-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    font-size: 0.78rem;
+
+    line-height: 1.4;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON
+========================================================= */
+
+.info-card-action {
+    flex-shrink: 0;
+
+    padding: 9px 14px;
+
+    border: 1px solid #800000;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #800000;
+
+    font: inherit;
+
+    font-size: 0.86rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.info-card-action:hover {
+    background: #800000;
+
+    color: #FFFFFF;
+
+    transform: translateX(3px);
+}
+
+
+.info-card-action:focus-visible,
+.about-action-btn:focus-visible {
+    outline: 3px solid #D4AF37;
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .about-information-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .info-card {
+        min-height: auto;
+
+        padding: 22px;
+
+        border-radius: 17px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .info-card-footer {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .info-card-action {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .info-card,
+    .info-card-icon,
+    .info-card::before,
+    .info-card::after,
+    .info-card-action {
+        transition: none;
+    }
+
+    .info-card:hover {
+        transform: none;
+    }
+
+}/* =========================================================
+   HISTORY & HERITAGE — PREMIUM 3D TIMELINE
+========================================================= */
+
+.history-section {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.history-introduction {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 26px;
+
+    margin: 35px 0 55px;
+    padding: 30px;
+
+    background: #FFFFFF;
+
+    border: 1px solid rgba(128, 0, 0, 0.15);
+    border-radius: 22px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.08);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.history-introduction:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.11);
+}
+
+
+.history-intro-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 78px;
+    height: 78px;
+
+    border-radius: 20px;
+
+    font-size: 38px;
+
+    background:
+        rgba(34, 139, 34, 0.08);
+
+    border: 1px solid
+        rgba(34, 139, 34, 0.18);
+
+    transform: translateZ(25px);
+}
+
+
+.history-kicker {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #D4AF37;
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+}
+
+
+.history-introduction h3 {
+    margin: 0 0 14px;
+
+    color: #800000;
+
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+
+.history-introduction p {
+    line-height: 1.9;
+}
+
+
+.history-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.history-meta span {
+    padding: 7px 11px;
+
+    border: 1px solid
+        rgba(128, 0, 0, 0.15);
+
+    border-radius: 20px;
+
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline {
+    position: relative;
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding: 15px 0 35px;
+}
+
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #D4AF37 8%,
+            #800000 50%,
+            #228B22 92%,
+            transparent
+        );
+
+    transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   TIMELINE CARD
+========================================================= */
+
+.timeline-card {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 80px 1fr;
+
+    width: calc(50% - 48px);
+
+    margin-bottom: 42px;
+
+    padding: 25px;
+
+    background: #FFFFFF;
+
+    border: 1px solid
+        rgba(128, 0, 0, 0.14);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.07);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.4s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.4s ease,
+        border-color 0.3s ease;
+}
+
+
+/* LEFT / RIGHT ALTERNATION */
+
+.timeline-card:nth-child(odd) {
+    margin-right: auto;
+}
+
+
+.timeline-card:nth-child(even) {
+    margin-left: auto;
+}
+
+
+/* CONNECTOR */
+
+.timeline-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 40px;
+
+    width: 48px;
+
+    height: 2px;
+
+    background: #D4AF37;
+}
+
+
+.timeline-card:nth-child(odd)::before {
+    right: -48px;
+}
+
+
+.timeline-card:nth-child(even)::before {
+    left: -48px;
+}
+
+
+/* CENTER DOT */
+
+.timeline-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 33px;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    border: 3px solid #800000;
+
+    box-shadow:
+        0 0 0 5px rgba(212, 175, 55, 0.12);
+
+    z-index: 3;
+}
+
+
+.timeline-card:nth-child(odd)::after {
+    right: -56px;
+}
+
+
+.timeline-card:nth-child(even)::after {
+    left: -56px;
+}
+
+
+/* =========================================================
+   3D HOVER
+========================================================= */
+
+.timeline-card:hover {
+    transform:
+        translateY(-8px)
+        rotateX(1deg);
+
+    border-color:
+        rgba(128, 0, 0, 0.3);
+
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   MARKER
+========================================================= */
+
+.timeline-marker {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(128, 0, 0, 0.06);
+
+    border: 1px solid
+        rgba(128, 0, 0, 0.16);
+
+    color: #800000;
+
+    font-weight: 800;
+
+    transform: translateZ(22px);
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.timeline-card:hover .timeline-marker {
+    transform:
+        translateZ(35px)
+        rotate(-4deg)
+        scale(1.05);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.timeline-content {
+    padding-left: 8px;
+}
+
+
+.timeline-period {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #D4AF37;
+
+    font-size: 0.7rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+
+.timeline-content h3 {
+    margin: 0 0 12px;
+
+    color: #800000;
+
+    font-size: 1.35rem;
+
+    line-height: 1.3;
+}
+
+
+.timeline-content p {
+    margin: 0 0 12px;
+
+    line-height: 1.85;
+}
+
+
+.timeline-source {
+    display: inline-block;
+
+    margin-top: 7px;
+
+    font-size: 0.76rem;
+
+    line-height: 1.5;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   HIGHLIGHT BOX
+========================================================= */
+
+.history-highlight {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 15px;
+
+    padding: 12px 14px;
+
+    border-left: 3px solid #D4AF37;
+
+    background:
+        rgba(212, 175, 55, 0.07);
+
+    border-radius: 0 9px 9px 0;
+
+    font-size: 0.88rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   SPECIAL CARDS
+========================================================= */
+
+.timeline-card-highlight {
+    border-color:
+        rgba(128, 0, 0, 0.25);
+}
+
+
+.timeline-card-current {
+    border-color:
+        rgba(34, 139, 34, 0.28);
+}
+
+
+/* =========================================================
+   DIGITAL ARCHIVE
+========================================================= */
+
+.history-archive {
+    display: grid;
+
+    grid-template-columns: 75px 1fr;
+
+    gap: 22px;
+
+    margin-top: 35px;
+
+    padding: 30px;
+
+    background: #FFFFFF;
+
+    border: 1px solid
+        rgba(34, 139, 34, 0.18);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.07);
+}
+
+
+.history-archive-icon {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(34, 139, 34, 0.08);
+
+    font-size: 30px;
+
+    transform: translateZ(20px);
+}
+
+
+.history-archive h3 {
+    margin: 5px 0 12px;
+
+    color: #800000;
+
+    font-size: 1.5rem;
+}
+
+
+.history-archive p {
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   PRINCIPLES
+========================================================= */
+
+.history-principles {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 20px;
+}
+
+
+.history-principles span {
+    padding: 7px 12px;
+
+    color: #800000;
+
+    border: 1px solid
+        rgba(128, 0, 0, 0.18);
+
+    border-radius: 20px;
+
+    font-size: 0.76rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.history-closing {
+    margin-top: 45px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border-top: 1px solid
+        rgba(128, 0, 0, 0.15);
+
+    border-bottom: 1px solid
+        rgba(128, 0, 0, 0.15);
+}
+
+
+.history-closing p {
+    margin: 0;
+
+    color: #800000;
+
+    font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+
+    line-height: 1.8;
+}
+
+
+.history-closing span {
+    display: block;
+
+    margin-top: 20px;
+
+    color: #D4AF37;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+}
+
+
+.history-closing small {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 0.82rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE TIMELINE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .timeline {
+        padding-left: 28px;
+    }
+
+
+    .timeline::before {
+        left: 8px;
+
+        transform: none;
+    }
+
+
+    .timeline-card,
+    .timeline-card:nth-child(odd),
+    .timeline-card:nth-child(even) {
+
+        width: 100%;
+
+        margin-left: 0;
+
+        margin-right: 0;
+
+        grid-template-columns: 60px 1fr;
+
+    }
+
+
+    .timeline-card::before,
+    .timeline-card:nth-child(odd)::before,
+    .timeline-card:nth-child(even)::before {
+
+        left: -20px;
+        right: auto;
+
+        width: 20px;
+
+    }
+
+
+    .timeline-card::after,
+    .timeline-card:nth-child(odd)::after,
+    .timeline-card:nth-child(even)::after {
+
+        left: -28px;
+        right: auto;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .history-introduction {
+        grid-template-columns: 1fr;
+
+        padding: 22px;
+    }
+
+
+    .history-intro-icon {
+        width: 60px;
+        height: 60px;
+
+        font-size: 28px;
+    }
+
+
+    .history-archive {
+        grid-template-columns: 1fr;
+
+        padding: 22px;
+    }
+
+
+    .timeline-card {
+        padding: 20px;
+    }
+
+
+    .timeline-content {
+        padding-left: 0;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .history-introduction,
+    .timeline-card,
+    .timeline-marker {
+        transition: none;
+    }
+
+    .history-introduction:hover,
+    .timeline-card:hover {
+        transform: none;
+    }
+
 }
