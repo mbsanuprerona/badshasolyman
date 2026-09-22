@@ -8354,4 +8354,547 @@ document.addEventListener("DOMContentLoaded", function () {
         </article>
 
     `;
-}
+}/* =========================================================
+   OUR MAHESHKHALI
+   ABOUT SECTION — FUNCTIONAL JAVASCRIPT
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const readMoreBtn =
+        document.getElementById("about-read-more");
+
+    const extraContent =
+        document.getElementById("about-extra-content");
+
+    const verificationBtn =
+        document.getElementById("about-verification");
+
+    const verificationPanel =
+        document.getElementById("about-verification-panel");
+
+    const copyBtn =
+        document.getElementById("about-copy");
+
+
+    /* =====================================================
+       READ FULL PROFILE
+    ===================================================== */
+
+    if (readMoreBtn && extraContent) {
+
+        readMoreBtn.addEventListener("click", () => {
+
+            const isOpen =
+                readMoreBtn.getAttribute("aria-expanded") === "true";
+
+            if (isOpen) {
+
+                extraContent.hidden = true;
+
+                readMoreBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                readMoreBtn.innerHTML =
+                    "📖 Read Full Profile";
+
+            } else {
+
+                extraContent.hidden = false;
+
+                readMoreBtn.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                readMoreBtn.innerHTML =
+                    "📕 Hide Full Profile";
+
+                setTimeout(() => {
+
+                    extraContent.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest"
+                    });
+
+                }, 100);
+            }
+        });
+    }
+
+
+    /* =====================================================
+       VERIFICATION PANEL
+    ===================================================== */
+
+    if (verificationBtn && verificationPanel) {
+
+        verificationBtn.addEventListener("click", () => {
+
+            const isOpen =
+                verificationBtn.getAttribute("aria-expanded") === "true";
+
+            if (isOpen) {
+
+                verificationPanel.hidden = true;
+
+                verificationBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                verificationBtn.innerHTML =
+                    "✓ Verification";
+
+            } else {
+
+                verificationPanel.hidden = false;
+
+                verificationBtn.setAttribute(
+                    "aria-expanded",
+                    "true"
+                );
+
+                verificationBtn.innerHTML =
+                    "✓ Hide Verification";
+
+                setTimeout(() => {
+
+                    verificationPanel.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest"
+                    });
+
+                }, 100);
+            }
+        });
+    }
+
+
+    /* =====================================================
+       COPY ABOUT INFORMATION
+    ===================================================== */
+
+    if (copyBtn) {
+
+        copyBtn.addEventListener("click", async () => {
+
+            const aboutSection =
+                document.getElementById("about");
+
+            if (!aboutSection) return;
+
+
+            /* ---------------------------------------------
+               Clone section
+            --------------------------------------------- */
+
+            const clone =
+                aboutSection.cloneNode(true);
+
+
+            /* Remove buttons / interactive elements */
+
+            clone
+                .querySelectorAll(
+                    "button, script, style"
+                )
+                .forEach(element => {
+                    element.remove();
+                });
+
+
+            /* Remove hidden content attribute */
+
+            clone
+                .querySelectorAll("[hidden]")
+                .forEach(element => {
+                    element.hidden = false;
+                });
+
+
+            /* ---------------------------------------------
+               Clean text
+            --------------------------------------------- */
+
+            let text =
+                clone.innerText
+                    .replace(/\n{3,}/g, "\n\n")
+                    .trim();
+
+
+            /* Add project identity */
+
+            text =
+`OUR MAHESHKHALI
+One Island. One Community. One Platform.
+
+${text}`;
+
+
+            /* ---------------------------------------------
+               Copy
+            --------------------------------------------- */
+
+            try {
+
+                await navigator.clipboard.writeText(text);
+
+                showAboutCopyStatus(
+                    copyBtn,
+                    "✓ Information Copied"
+                );
+
+            } catch (error) {
+
+                /* Fallback */
+
+                const textarea =
+                    document.createElement("textarea");
+
+                textarea.value = text;
+
+                textarea.style.position = "fixed";
+                textarea.style.opacity = "0";
+
+                document.body.appendChild(textarea);
+
+                textarea.select();
+
+                try {
+
+                    document.execCommand("copy");
+
+                    showAboutCopyStatus(
+                        copyBtn,
+                        "✓ Information Copied"
+                    );
+
+                } catch (fallbackError) {
+
+                    showAboutCopyStatus(
+                        copyBtn,
+                        "Copy Failed"
+                    );
+                }
+
+                textarea.remove();
+            }
+        });
+    }
+
+
+    /* =====================================================
+       COPY BUTTON STATUS
+    ===================================================== */
+
+    function showAboutCopyStatus(button, message) {
+
+        const originalText =
+            button.innerHTML;
+
+        button.innerHTML = message;
+
+        button.setAttribute(
+            "aria-label",
+            message
+        );
+
+        setTimeout(() => {
+
+            button.innerHTML =
+                "📋 Copy Information";
+
+            button.setAttribute(
+                "aria-label",
+                "Copy Information"
+            );
+
+        }, 2000);
+    }
+
+
+    /* =====================================================
+       ABOUT DATA CARD 3D HOVER
+    ===================================================== */
+
+    const aboutCards =
+        document.querySelectorAll(
+            ".about-data-item, .quick-info-card"
+        );
+
+
+    aboutCards.forEach(card => {
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                /* Disable effect on touch devices */
+
+                if (
+                    window.matchMedia(
+                        "(hover: none)"
+                    ).matches
+                ) {
+                    return;
+                }
+
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const rotateY =
+                    ((x - centerX) / centerX) * 4;
+
+                const rotateX =
+                    ((centerY - y) / centerY) * 4;
+
+
+                card.style.transform =
+                    `translateY(-6px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateZ(8px)`;
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform = "";
+            }
+        );
+    });
+
+
+    /* =====================================================
+       TOURISM / PLACE CARD INTERACTION
+    ===================================================== */
+
+    const placeItems =
+        document.querySelectorAll(
+            ".about-places-list li"
+        );
+
+
+    placeItems.forEach(item => {
+
+        item.setAttribute(
+            "tabindex",
+            "0"
+        );
+
+
+        item.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    item.classList.toggle(
+                        "place-active"
+                    );
+                }
+            }
+        );
+    });
+
+
+    /* =====================================================
+       INTERSECTION OBSERVER
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".about-data-item, \
+             .quick-info-card, \
+             .about-places-list li, \
+             .about-data-group, \
+             .about-philosophy"
+        );
+
+
+    if ("IntersectionObserver" in window) {
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "about-visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+                        }
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(element => {
+
+            element.classList.add(
+                "about-reveal"
+            );
+
+            observer.observe(element);
+        });
+    }
+
+
+    /* =====================================================
+       DYNAMIC REVEAL STYLE
+       Added through JS so existing CSS structure
+       does not need to change.
+    ===================================================== */
+
+    const revealStyle =
+        document.createElement("style");
+
+    revealStyle.textContent = `
+
+        .about-reveal {
+            opacity: 0;
+            transform:
+                translateY(22px)
+                scale(0.98);
+            transition:
+                opacity 0.65s ease,
+                transform 0.65s ease;
+        }
+
+        .about-reveal.about-visible {
+            opacity: 1;
+            transform:
+                translateY(0)
+                scale(1);
+        }
+
+        .place-active {
+            transform:
+                translateY(-6px)
+                scale(1.02);
+        }
+
+    `;
+
+    document.head.appendChild(
+        revealStyle
+    );
+
+
+    /* =====================================================
+       STAGGER ANIMATION
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            ".about-data-item"
+        )
+        .forEach((item, index) => {
+
+            item.style.transitionDelay =
+                `${(index % 6) * 70}ms`;
+        });
+
+
+    document
+        .querySelectorAll(
+            ".quick-info-card"
+        )
+        .forEach((item, index) => {
+
+            item.style.transitionDelay =
+                `${index * 80}ms`;
+        });
+
+
+    document
+        .querySelectorAll(
+            ".about-places-list li"
+        )
+        .forEach((item, index) => {
+
+            item.style.transitionDelay =
+                `${(index % 5) * 70}ms`;
+        });
+
+
+    /* =====================================================
+       INITIAL ARIA STATE
+    ===================================================== */
+
+    if (readMoreBtn && extraContent) {
+
+        extraContent.hidden = true;
+
+        readMoreBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+    }
+
+
+    if (
+        verificationBtn &&
+        verificationPanel
+    ) {
+
+        verificationPanel.hidden = true;
+
+        verificationBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+    }
+
+
+    /* =====================================================
+       CONSOLE CONFIRMATION
+    ===================================================== */
+
+    console.log(
+        "🌴 OUR MAHESHKHALI — About Module Loaded"
+    );
+
+});
