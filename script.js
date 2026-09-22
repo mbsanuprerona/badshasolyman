@@ -8897,4 +8897,159 @@ ${text}`;
         "🌴 OUR MAHESHKHALI — About Module Loaded"
     );
 
+});/* =========================================================
+   ABOUT INFORMATION CARDS — INTERACTION
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const infoCards = document.querySelectorAll(".info-card");
+    const exploreButtons = document.querySelectorAll(".info-card-action");
+
+    /* -----------------------------------------------------
+       01. CARD 3D MOUSE EFFECT
+    ----------------------------------------------------- */
+
+    infoCards.forEach((card) => {
+
+        card.addEventListener("mousemove", (event) => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateY = ((x - centerX) / centerX) * 3;
+            const rotateX = ((centerY - y) / centerY) * 3;
+
+            card.style.transform =
+                `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            card.style.transform =
+                "translateY(0) rotateX(0deg) rotateY(0deg)";
+        });
+
+    });
+
+
+    /* -----------------------------------------------------
+       02. EXPLORE BUTTON
+    ----------------------------------------------------- */
+
+    const pageMap = {
+        geography: "pages/geography.html",
+        nature: "pages/nature.html",
+        coastal: "pages/coastal.html",
+        community: "pages/community.html"
+    };
+
+    exploreButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const topic = button.dataset.aboutTopic;
+
+            if (!topic) {
+                console.warn("No topic found for this button.");
+                return;
+            }
+
+            const targetPage = pageMap[topic];
+
+            if (!targetPage) {
+                console.warn(`No page mapped for topic: ${topic}`);
+                return;
+            }
+
+            window.location.href = targetPage;
+
+        });
+
+    });
+
+
+    /* -----------------------------------------------------
+       03. KEYBOARD ACCESSIBILITY
+    ----------------------------------------------------- */
+
+    infoCards.forEach((card) => {
+
+        card.addEventListener("keydown", (event) => {
+
+            if (event.key === "Enter" || event.key === " ") {
+
+                const button = card.querySelector(".info-card-action");
+
+                if (button) {
+                    event.preventDefault();
+                    button.click();
+                }
+
+            }
+
+        });
+
+    });
+
+
+    /* -----------------------------------------------------
+       04. SCROLL REVEAL
+    ----------------------------------------------------- */
+
+    const cardObserver = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach((entry) => {
+
+                if (!entry.isIntersecting) return;
+
+                entry.target.classList.add("is-visible");
+
+                observer.unobserve(entry.target);
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+
+    infoCards.forEach((card, index) => {
+
+        card.style.setProperty(
+            "--card-delay",
+            `${index * 100}ms`
+        );
+
+        cardObserver.observe(card);
+
+    });
+
+
+    /* -----------------------------------------------------
+       05. BUTTON CLICK FEEDBACK
+    ----------------------------------------------------- */
+
+    exploreButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            button.classList.add("is-clicked");
+
+            setTimeout(() => {
+                button.classList.remove("is-clicked");
+            }, 400);
+
+        });
+
+    });
+
 });

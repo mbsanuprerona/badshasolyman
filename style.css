@@ -8004,4 +8004,406 @@ body.modal-open {
     .source-label {
         width: 100%;
     }
+} /* =========================================================
+    INFORMATION CARDS — PREMIUM 3D
+ ========================================================== */
+
+.about-information-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    margin-top: 45px;
+
+    perspective: 1400px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.info-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 360px;
+
+    padding: 26px;
+
+    border: 2px solid var(--about-gold);
+    border-radius: 24px;
+
+    background: var(--about-white);
+
+    box-shadow:
+        0 15px 40px rgba(128, 0, 0, 0.10);
+
+    transform-style: preserve-3d;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+.info-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    right: -70px;
+    top: -70px;
+
+    border: 2px solid var(--about-gold);
+    border-radius: 50%;
+
+    opacity: 0.20;
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.info-card::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: var(--about-maroon);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.info-card:hover {
+    transform:
+        translateY(-10px)
+        rotateX(2deg)
+        rotateY(-1deg);
+
+    border-color: var(--about-maroon);
+
+    box-shadow:
+        0 28px 60px rgba(128, 0, 0, 0.18);
+}
+
+
+.info-card:hover::before {
+    transform:
+        scale(1.25)
+        rotate(25deg);
+}
+
+
+.info-card:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.info-card-top {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.info-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+
+    border: 2px solid var(--about-gold);
+    border-radius: 18px;
+
+    background: var(--about-white);
+
+    font-size: 2rem;
+
+    box-shadow:
+        0 10px 25px rgba(212, 175, 55, 0.16);
+
+    transform:
+        translateZ(25px);
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.info-card:hover .info-card-icon {
+    transform:
+        translateZ(45px)
+        rotateY(10deg)
+        rotateX(-5deg);
+}
+
+
+/* =========================================================
+   CARD NUMBER
+========================================================= */
+
+.info-card-number {
+    color: var(--about-gold);
+
+    font-size: 2.3rem;
+    line-height: 1;
+
+    font-weight: 900;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.info-card-content {
+    position: relative;
+    z-index: 2;
+
+    flex: 1;
+}
+
+
+.info-card-label {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: var(--about-green);
+
+    font-size: 0.72rem;
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+}
+
+
+.info-card-content h3 {
+    margin: 0 0 15px;
+
+    color: var(--about-maroon);
+
+    font-size: clamp(1.45rem, 3vw, 2rem);
+
+    line-height: 1.2;
+
+    font-weight: 900;
+}
+
+
+.info-card-content p {
+    margin: 0;
+
+    color: var(--about-green);
+
+    font-size: 0.95rem;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.info-card-footer {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 25px;
+    padding-top: 18px;
+
+    border-top: 1px solid var(--about-gold);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.card-status {
+    color: var(--about-green);
+
+    font-size: 0.76rem;
+    font-weight: 800;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+.info-card-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    min-width: 105px;
+
+    padding: 10px 16px;
+
+    border: 2px solid var(--about-maroon);
+    border-radius: 50px;
+
+    background: var(--about-white);
+    color: var(--about-maroon);
+
+    font: inherit;
+
+    font-size: 0.82rem;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.info-card-action span {
+    color: var(--about-gold);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.info-card-action:hover {
+    transform:
+        translateY(-3px);
+
+    border-color: var(--about-gold);
+
+    background: var(--about-gold);
+
+    color: var(--about-maroon);
+
+    box-shadow:
+        0 10px 22px rgba(212, 175, 55, 0.20);
+}
+
+
+.info-card-action:hover span {
+    transform:
+        translateX(5px);
+
+    color: var(--about-maroon);
+}
+
+
+.info-card-action:focus-visible {
+    outline: 3px solid var(--about-gold);
+    outline-offset: 4px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .about-information-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+        margin-top: 35px;
+    }
+
+    .info-card {
+        min-height: auto;
+
+        padding: 22px;
+    }
+
+    .info-card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .info-card-action {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .info-card {
+        padding: 19px;
+        border-radius: 20px;
+    }
+
+    .info-card-icon {
+        width: 55px;
+        height: 55px;
+
+        font-size: 1.7rem;
+    }
+
+    .info-card-number {
+        font-size: 1.8rem;
+    }
+
+    .info-card-content p {
+        font-size: 0.9rem;
+    }
 }
